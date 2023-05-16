@@ -37,7 +37,7 @@ module.exports = env => {
         output: {
             filename: isProd ? '[fullhash].bundle.js' : '[fullhash].bundle.js',
             globalObject: 'this',
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(__dirname, 'docs'),
         },
 
         resolve: {

@@ -89,7 +89,7 @@ export class Sample {
 
         public webGridGroupByRowTemplate = (ctx: IgcGroupByRowTemplateContext) => {
 
-            const groupRow: any = ctx["implicit"];
+            const groupRow: any = ctx["$implicit"];
             const values = groupRow.records;
 
             const startDate = new Date('1/1/2022');
