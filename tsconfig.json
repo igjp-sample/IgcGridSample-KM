@@ -3,7 +3,7 @@
     "noImplicitReturns": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "declarationDir": "dist/types",
+    "declarationDir": "docs/types",
     "moduleResolution": "node",
     "declaration": true,
     "target": "es2015",
@@ -34,6 +34,6 @@
   ],
   "exclude": [
       "node_modules",
-      "dist"
+      "docs"
   ]
 }
