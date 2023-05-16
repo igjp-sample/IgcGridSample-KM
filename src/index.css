@@ -1,0 +1,25 @@
+/* shared styles are loaded from: */
+/* https://static.infragistics.com/xplatform/css/samples */
+
+igc-grid igc-tabs {
+    width: 100%;
+    height: 250px;
+}
+
+.details-chart {
+    width: 200px;
+    height: 200px;
+}
+
+.igx-grid-toolbar .igx-button {
+    min-height: 2rem;
+}
+#grid .igx-grid-toolbar__actions>* {
+    margin-inline-start: .25rem;
+}
+#grid .igx-grid-toolbar__custom-content {
+    margin-inline-end: 0;
+}
+#grid .igx-grid-toolbar {
+    border-bottom: none;
+}
