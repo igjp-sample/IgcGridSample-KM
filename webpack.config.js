@@ -53,6 +53,15 @@ module.exports = env => {
         module: {
             rules: [
                 { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader'] },
+                {
+                    test: /\.(xlsx)$/,
+                    loader: 'file-loader',
+                    options: {
+                      name: '[name].[ext]',
+                      outputPath: 'assets/', // output location
+                      publicPath: 'assets/', // server-relative URL
+                    },
+                },
                 { test: /\.(csv|tsv)$/, use: ['csv-loader'] },
                 { test: /\.xml$/, use: ['xml-loader'] },
                 { test: /\.css$/, sideEffects: true, use: ['style-loader', 'css-loader'] },

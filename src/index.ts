@@ -1,3 +1,4 @@
+import { ExcelUtility } from './ExcelUtility';
 import 'igniteui-webcomponents-grids/grids/combined';
 import { ModuleManager } from "igniteui-webcomponents-core";
 import { IgcGridComponent, IgcGroupingExpression, SortingDirection, IgcColumnComponent } from 'igniteui-webcomponents-grids/grids';
@@ -7,32 +8,93 @@ import { IgcPieChartModule } from "igniteui-webcomponents-charts";
 import { html, nothing } from 'lit-html';
 import { defineComponents, IgcTabsComponent, IgcAvatarComponent } from "igniteui-webcomponents";
 import './index.css';
+import { CellFill, IWorksheetCellFormat, IWorksheetCellFormatProxyContext_$type, Workbook, WorkbookColorInfo, Worksheet, WorksheetRowCollection } from 'igniteui-webcomponents-excel';
+import { WorkbookFormat } from 'igniteui-webcomponents-excel';
+import { IgcSpreadsheetComponent } from 'igniteui-webcomponents-spreadsheet';
+import { IgcExcelModule } from 'igniteui-webcomponents-excel';
+import { Color } from 'igniteui-webcomponents-core';
+// @ts-ignore
+import pathToXlsxFile from './template.xlsx';
 
 import "igniteui-webcomponents-grids/grids/themes/light/bootstrap.css";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
 defineComponents(IgcTabsComponent, IgcAvatarComponent);
-ModuleManager.register(IgcPieChartModule);
+ModuleManager.register(IgcPieChartModule,IgcExcelModule);
 
 export class Sample {
 
     private grid: IgcGridComponent
 
     private column1: IgcColumnComponent
+    private unitPriceColumn: IgcColumnComponent
     private _bind: () => void;
+
+    private spreadsheet: IgcSpreadsheetComponent;
+
+    private cf:IWorksheetCellFormat;
+    private cellFill: CellFill;
 
     constructor() {
         var grid = this.grid = document.getElementById('grid') as IgcGridComponent;
         var column1 = this.column1 = document.getElementById('column1') as IgcColumnComponent;
-
+        var unitPriceColumn = this.unitPriceColumn = document.getElementById('UnitPriceColumn') as IgcColumnComponent;
         this._bind = () => {
             grid.data = this.invoicesData;
             grid.groupRowTemplate = this.webGridGroupByRowTemplate;
             column1.bodyTemplate = this.webGridBooleanCellTemplate;
+            unitPriceColumn.bodyTemplate = this.unitPriceCellTemplate;
             grid.detailTemplate = this.detailTemplate;
         }
         this._bind();
+        const toXls1Btn = document.getElementById('toXls1') as HTMLButtonElement;
+        toXls1Btn!.addEventListener('click', this.toXls1Func);
 
+        const toXls2Btn = document.getElementById('toXls2') as HTMLButtonElement;
+        toXls2Btn!.addEventListener('click', this.toXls2Func);
+    }
+
+    public toXls1Func = (e: any) => {
+        ExcelUtility.loadFromUrl(pathToXlsxFile).then((w) => {
+            for (let i = 0; i < this.invoicesData.length; i++) {
+                const items = this.invoicesData[i];
+                const xlRow = w.worksheets(0).rows(i + 1);
+                xlRow.setCellValue(0, items.ShipCity);
+                xlRow.setCellValue(1, items.ShipperName);
+                xlRow.setCellValue(2, items.ExtendedPrice);
+            }
+            ExcelUtility.save(w, 'filledOut');
+        });
+    }
+
+    public toXls2Func = (e: any) => {
+        const wb = new Workbook(WorkbookFormat.Excel2007);
+        const ws = wb.worksheets().add("Sheet1");
+
+        ws.rows(0).cells(0).value = "ShipperName-1";
+        ws.rows(0).cells(1).value = "ShipperName-2";
+        ws.rows(0).cells(2).value = "UnitPrice";
+
+        for (let i = 0; i < this.invoicesData.length; i++) {
+            const items = this.invoicesData[i];
+            const xlRow = ws.rows(i + 1);
+            xlRow.setCellValue(0, items.ShipperName.split(' ')[0]);
+            xlRow.setCellValue(1, items.ShipperName.split(' ')[1]);
+            xlRow.setCellValue(2, items.UnitPrice);
+            if (items.UnitPrice > 20000) {
+                let red = new Color();
+                red.colorString = "#ff0000";
+                xlRow.cells(2).cellFormat.fill = CellFill.createSolidFill(new WorkbookColorInfo(red));
+            }
+        }
+
+        ExcelUtility.save(wb, 'createdFromScratch');
+    }
+
+    public unitPriceCellTemplate = (ctx: IgcCellTemplateContext) => {
+        return html`
+           $ ${ctx.cell.value}
+        `;
     }
 
     private detailTemplate = (context: any) => {
@@ -87,8 +149,7 @@ export class Sample {
         return this._invoicesData;
     }
 
-        public webGridGroupByRowTemplate = (ctx: IgcGroupByRowTemplateContext) => {
-
+        public webGridGroupByRowTemplate = (ctx: any) => {
             const groupRow: any = ctx["$implicit"];
             const values = groupRow.records;
 

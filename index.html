@@ -25,6 +25,12 @@
         id="grid"
         row-selection="multiple">
           <igc-grid-toolbar>
+            <button id="toXls2" igxbutton="outlined" type="button" name="customButton" title="customButton" role="button" class="igx-button igx-button--outlined">
+              to xls (2)
+            </button>
+            <button id="toXls1" igxbutton="outlined" type="button" name="customButton" title="customButton" role="button" class="igx-button igx-button--outlined">
+              to xls (1)
+            </button>
             <button igxbutton="outlined" type="button" name="customButton" title="customButton" role="button" class="igx-button igx-button--outlined">
               Custom
             </button>
@@ -92,6 +98,13 @@
             <igc-column
             field="UnitPrice"
             header="Unit Price"
+            width="200px"
+            id="UnitPriceColumn"
+            groupable="true">
+            </igc-column>
+            <igc-column
+            field="ExtendedPrice"
+            header="Extended Price"
             width="200px"
             groupable="true">
             </igc-column>

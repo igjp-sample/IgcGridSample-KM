@@ -1,0 +1,47 @@
+/*!
+
+JSZip v3.10.1 - A JavaScript class for generating and reading zip files
+<http://stuartk.com/jszip>
+
+(c) 2009-2016 Stuart Knightley <stuart [at] stuartk.com>
+Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/jszip/main/LICENSE.markdown.
+
+JSZip uses the library pako released under the MIT license :
+https://github.com/nodeca/pako/blob/main/LICENSE
+*/
+
+/*!
+THIS INFRAGISTICS ULTIMATE SOFTWARE LICENSE  AGREEMENT ("AGREEMENT") LOCATED HERE:
+https://www.infragistics.com/legal/license/igultimate-la
+https://www.infragistics.com/legal/license/igultimate-eula
+GOVERNS THE LICENSING, INSTALLATION AND USE OF INFRAGISTICS SOFTWARE. BY DOWNLOADING AND/OR INSTALLING AND USING INFRAGISTICS SOFTWARE:  you are indicating that you have read and understand this Agreement, and agree to be legally bound by it on behalf of the yourself and your company.
+*/
+
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
+
+/*! unicode_hack.js
+Copyright (C) 2010-2012,2014  Marcelo Gibson de Castro GonÃ§alves. All rights reserved.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+*/
+
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
+ * @license
+ * Copyright 2021 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
