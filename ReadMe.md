@@ -17,9 +17,12 @@ https://igjp-sample.github.io/IgcGridSample-KM/
 
 - [x] Q6. Achieving a master/detail view similar to below:<br>**=> We have master-detail function on our grid, in the sample, I implemented our tab control and chart control into master-detail view, it means you can do whatever you want inside a master-detail view.**
 
-- [ ] Q7. Exporting to excel using custom data transforms (i.e turning $1,234 into 1234), or a composite field like “AUD 1,234” into 2 columns “AUD” and “1234”.
+- [x] Q7. Exporting to excel using custom data transforms (i.e turning $1,234 into 1234), or a composite field like “AUD 1,234” into 2 columns “AUD” and “1234”.:<br>**=> There are several way to achive this. In order to do with #2 and #3, ExcelLibrary will be used to generate Excel files from the data, rather than the grid's built-in export function.**
+    1. By using cell template, it is possible to change only the format of the data when displayed on the grid, without changing the data itself. You can see that the dollar mark in the UnitPrice column are not included when you export from the Export button in the upper right corner on sample.
+    2. Prepare a template Excel file for output and use ExcelLibrary to pour data into the template Excel file, which will reflect the predefined format in the template Excel file. You can see what is done by clicking "to xls(1)" button on sample. You can also check here is the template excel file.
+    3. Instead of using a template as in Method #2, converting values as you want and placing to sheet by writing the code. You can click "to xls(2)" button to see ShipperName data will be separated by blank space and will be placed column 1 and 2 on excel.
 
-- [ ] Q8. Exporting to excel including cell templating (i.e. red cell on screen becomes red cell in excel)
+- [x] Q8. Exporting to excel including cell templating (i.e. red cell on screen becomes red cell in excel):<br>**=> This is also can be by using ExcelLibary. It is possible to get the cell style by accessing each cell then reflect it to cells on excel, however since that is redundant, I would recommend defining your own style that determines the value when writing the value to the cell and applies it when needed. You can see clicking "to xls(2)" that the value of UnitPrice column chages the background color to red if the value is higher than 20000.**
 
 ## How to run
 
