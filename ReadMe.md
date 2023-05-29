@@ -11,7 +11,7 @@ https://igjp-sample.github.io/IgcGridSample-KM/
 
 - [ ] Q3. Include a custom button in the same row as the “Group By” fields (minimise vertical space usage).  Example below combines Group By, selection, paging and action buttons into one header.
 
-- [ ] Q4. An example showing how the style/location of paging elements can be modified.  I.e. could we use a dropdown instead of just left/right arrows?  Refer to image above.
+- [x] Q4. An example showing how the style/location of paging elements can be modified.  I.e. could we use a dropdown instead of just left/right arrows?  Refer to image above.:<br>**=> As you can see [here](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/remote-data-operations#remote-paging-with-custom-paginator), our Angular grid has that ability, but for now, that feature has not yet been ported to the Web Components version. This means it will be even longer that functionality is implemented in the react grid.**
 
 - [x] Q5. Using checkbox to select all rows in a “group by” field similar to below:<br>**=> Can do just combining row selector and group by functions.**
 
