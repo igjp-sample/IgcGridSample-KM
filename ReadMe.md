@@ -9,7 +9,7 @@ https://igjp-sample.github.io/IgcGridSample-KM/
 1. Use CSS: hide existing icon and add new icon you want by using css background image.
 2. Adding custom button having function for example column hiding on your own.**
 
-- [ ] Q3. Include a custom button in the same row as the “Group By” fields (minimise vertical space usage).  Example below combines Group By, selection, paging and action buttons into one header.
+- [x] Q3. Include a custom button in the same row as the “Group By” fields (minimise vertical space usage).  Example below combines Group By, selection, paging and action buttons into one header.<br>**=> Our grid does not have this feature as built-in, but if you want to do, you can customize it. In the sample, we changed DOM structure a little bit and wrote a custom style to place buttons and Group By fields in a same row. However, basically we suggest you that defining the grid within the functionality we provide out-of-the-box. Please consider submitting a feature request if you expect this functionality to be provided as a built-in feature.**
 
 - [x] Q4. An example showing how the style/location of paging elements can be modified.  I.e. could we use a dropdown instead of just left/right arrows?  Refer to image above.:<br>**=> As you can see [here](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/remote-data-operations#remote-paging-with-custom-paginator), our Angular grid has that ability, but for now, that feature has not yet been ported to the Web Components version. This means it will be even longer that functionality is implemented in the react grid.**
 
