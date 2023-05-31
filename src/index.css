@@ -23,3 +23,21 @@ igc-grid igc-tabs {
 #grid .igx-grid-toolbar {
     border-bottom: none;
 }
+#grid .igx-grid-grouparea {
+    border-bottom: none;
+    height: 0;
+    min-height: auto;
+    overflow: visible;
+}
+#grid .igx-drop-area {
+    margin-top: 10px;
+}
+#grid .igx-grid-grouparea__connector + .igx-drop-area {
+    margin-top: 0;
+}
+.custom-div-container {
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: 1px solid rgba(181, 189, 196, 0.38);
+    background: #F9FAFA;
+}

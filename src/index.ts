@@ -52,6 +52,21 @@ export class Sample {
 
         const toXls2Btn = document.getElementById('toXls2') as HTMLButtonElement;
         toXls2Btn!.addEventListener('click', this.toXls2Func);
+
+        window.addEventListener('load', (event) => {
+            var igcGridToolbar = document.getElementsByTagName('igc-grid-toolbar')[0];
+            var igxGridGroupByArea = document.getElementsByTagName('igx-grid-group-by-area')[0];
+
+            const divContainer = document.createElement('div');
+            divContainer.className = "custom-div-container";
+
+            var parentElement = igcGridToolbar.parentNode;
+            parentElement.replaceChild(divContainer, igcGridToolbar);
+            parentElement.removeChild(igxGridGroupByArea);
+
+            divContainer.appendChild(igcGridToolbar);
+            divContainer.appendChild(igxGridGroupByArea);
+        });
     }
 
     public toXls1Func = (e: any) => {
